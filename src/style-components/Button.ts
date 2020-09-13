@@ -47,12 +47,6 @@ const ButtonLarge = css`
     padding: 12px 24px;
 `
 
-const ButtonSpaceing = css`
-    button + button {
-        margin-left: 10px;
-    }
-`
-
 export const Button = styled.button<IButton>`
     font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 700;
