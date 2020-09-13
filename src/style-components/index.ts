@@ -2,3 +2,9 @@ export * from './Button';
 export * from './Header';
 export * from './Svg';
 export * from './Wrapper';
+export * from './Link';
+export * from './Paragraph';
+export * from './Section';
+export * from './Svg';
+export * from './Table';
+export * from './Span'

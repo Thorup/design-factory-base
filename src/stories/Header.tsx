@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({ user, onLogin, onLogout, onCreat
             />
           </g>
         </S.Svg>
-        <S.Header>Acme</S.Header>
+        <S.H1>Acme</S.H1>
       </div>
       <div>
         {user ? (
