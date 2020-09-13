@@ -13,38 +13,46 @@ export interface IButton {
      * How large should the button be?
      */
     size?: ButtonSize;
-  }
+}
 
-  export enum ButtonSize {
+export enum ButtonSize {
     SMALL = 'small',
     MEDIUM = 'medium',
     LARGE = 'large'
-  }
+}
 
 const ButtonPrimary = css`
-color: white;
-background-color: #1ea7fd;
+    color: white;
+    background-color: #1ea7fd;
 `
 
 const ButtonSecondary = css`
-color: #333;
-background-color: transparent;
-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset`
+    color: #333;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+`
 
 const ButtonSmall = css`
-font-size: 12px;
-padding: 10px 16px;
+    font-size: 12px;
+    padding: 10px 16px;
 `
 
 const ButtonMedium = css`
-font-size: 14px;
-padding: 11px 20px;
+    font-size: 14px;
+    padding: 11px 20px;
 `
 
 const ButtonLarge = css`
-font-size: 16px;
-padding: 12px 24px;
+    font-size: 16px;
+    padding: 12px 24px;
 `
+
+const ButtonSpaceing = css`
+    button + button {
+        margin-left: 10px;
+    }
+`
+
 export const Button = styled.button<IButton>`
     font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 700;
@@ -70,6 +78,6 @@ export const Button = styled.button<IButton>`
             }
         }
     }
-    }
-    ${(props: IButton) => props.primary ? ButtonPrimary : ButtonSecondary}
+    };
+    ${(props: IButton) => props.primary ? ButtonPrimary : ButtonSecondary};
 `;
