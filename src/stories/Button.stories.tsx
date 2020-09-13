@@ -1,8 +1,8 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
-
-import { Button, ButtonProps } from './Button';
+import * as S from '../style-components'
+import { Button, IButton } from './Button';
 
 export default {
   title: 'Example/Button',
@@ -12,7 +12,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<IButton> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -27,12 +27,18 @@ Secondary.args = {
 
 export const Large = Template.bind({});
 Large.args = {
-  size: 'large',
+  size: S.ButtonSize.LARGE,
+  label: 'Button',
+};
+
+export const Medium = Template.bind({});
+Medium.args = {
+  size: S.ButtonSize.MEDIUM,
   label: 'Button',
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  size: 'small',
+  size: S.ButtonSize.SMALL,
   label: 'Button',
 };
