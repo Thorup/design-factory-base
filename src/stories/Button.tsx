@@ -1,7 +1,11 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import * as S from '../style-components';
+import { defaultTheme } from '../style-themes';
 
-export interface IButton extends S.IButton  {
+export interface IButton {
+  primary?: boolean;
+  size?: S.ButtonSize;
   /**
    * Button contents
    */
@@ -18,18 +22,18 @@ export interface IButton extends S.IButton  {
 export const Button: React.FC<IButton> = ({
 primary = false,
 size = S.ButtonSize.MEDIUM,
-backgroundColor,
 label,
 ...props
 }) => {
 return (
-  <S.Button
-    primary={primary}
-    size={size}
-    backgroundColor={backgroundColor}
-    {...props}
-  >
-    {label}
-  </S.Button>
+  <ThemeProvider theme={defaultTheme}>
+    <S.Button
+      primary={primary}
+      size={size}
+      {...props}
+    >
+      {label}
+    </S.Button>
+  </ThemeProvider>
 );
 };

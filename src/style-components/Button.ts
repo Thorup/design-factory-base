@@ -1,18 +1,10 @@
 import styled, { css } from 'styled-components';
+import { IThemeButton, ThemeButtonProps } from '../style-themes';
 
 export interface IButton {
-    /**
-     * Is this the principal call to action on the page?
-     */
-    primary?: boolean;
-    /**
-     * What background color to use
-     */
-    backgroundColor?: string;
-    /**
-     * How large should the button be?
-     */
-    size?: ButtonSize;
+    theme: IThemeButton;
+    primary: boolean;
+    size: ButtonSize;
 }
 
 export enum ButtonSize {
@@ -22,14 +14,14 @@ export enum ButtonSize {
 }
 
 const ButtonPrimary = css`
-    color: white;
-    background-color: #1ea7fd;
+    color: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.BUTTONPRIMARY][ThemeButtonProps.COLOR]};
+    background-color: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.BUTTONPRIMARY][ThemeButtonProps.BACKGROUNDCOLOR]};
 `
 
 const ButtonSecondary = css`
-    color: #333;
-    background-color: transparent;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+    color: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.BUTTONSECONDARY][ThemeButtonProps.COLOR]};
+    background-color: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.BUTTONSECONDARY][ThemeButtonProps.BACKGROUNDCOLOR]};
+    box-shadow: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.BUTTONSECONDARY][ThemeButtonProps.BOXSHADOW]};
 `
 
 const ButtonSmall = css`
@@ -48,30 +40,29 @@ const ButtonLarge = css`
 `
 
 export const Button = styled.button<IButton>`
-    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    border: 0;
-    border-radius: 3em;
-    cursor: pointer;
+    font-family: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.FONTFAMILY]};
+    font-weight: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.FONTWEIGHT]};
+    border: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.BORDER]};
+    border-radius: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.BORDERRADIUS]};
+    cursor: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.CURSOR]};
     display: inline-block;
-    line-height: 1;
-    background-color: ${(props: IButton) => props.backgroundColor ? props.backgroundColor + ' !important' : ''};
+    line-height: ${(props: IButton) => props.theme[ThemeButtonProps.BUTTONSTYLES][ThemeButtonProps.LINEHEIGHT]};
     ${(props: IButton) => 
         { switch(props.size) {
-            case ButtonSize.SMALL:  {
-                return ButtonSmall;
-            }
-            case ButtonSize.MEDIUM: {
-                return ButtonMedium;
-            }
-            case ButtonSize.LARGE: {
-                return ButtonLarge
-            }
-            default: {
-                return ButtonMedium;
+                case ButtonSize.SMALL:  {
+                    return ButtonSmall;
+                }
+                case ButtonSize.MEDIUM: {
+                    return ButtonMedium;
+                }
+                case ButtonSize.LARGE: {
+                    return ButtonLarge
+                }
+                default: {
+                    return ButtonMedium;
+                }
             }
         }
-    }
     };
     ${(props: IButton) => props.primary ? ButtonPrimary : ButtonSecondary};
 `;

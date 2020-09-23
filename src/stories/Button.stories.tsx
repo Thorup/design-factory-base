@@ -9,7 +9,7 @@ export default {
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
-  },
+  }
 } as Meta;
 
 const Template: Story<IButton> = (args) => <Button {...args} />;
@@ -17,28 +17,28 @@ const Template: Story<IButton> = (args) => <Button {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
-  label: 'Button',
+  label: 'Button'
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: 'Button',
+  label: 'Button'
 };
 
 export const Large = Template.bind({});
 Large.args = {
   size: S.ButtonSize.LARGE,
-  label: 'Button',
+  label: 'Button'
 };
 
 export const Medium = Template.bind({});
 Medium.args = {
   size: S.ButtonSize.MEDIUM,
-  label: 'Button',
+  label: 'Button'
 };
 
 export const Small = Template.bind({});
 Small.args = {
   size: S.ButtonSize.SMALL,
-  label: 'Button',
+  label: 'Button'
 };

@@ -1,6 +1,25 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { IThemeDiv, ThemeDivProps } from '../style-themes';
 
-export const Wrapper = styled.div`
+export interface IDiv {
+    theme: IThemeDiv;
+    type: DivType;
+}
+
+export enum DivType {
+    TRANSPARENT = 'transparent',
+    TEXTAREA = 'textarea'
+}
+
+const transparent = css`
+    background-color: transparent;
+`;
+
+const textArea = css`
+    background-color: ${(props: IDiv) => props.theme[ThemeDivProps.DIVSTYLES][ThemeDivProps.DIVTEXTAREA][ThemeDivProps.BACKGROUNDCOLOR]};
+`;
+
+export const Div = styled.div`
     font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 15px 20px;
@@ -10,9 +29,21 @@ export const Wrapper = styled.div`
     button + button {
         margin-left: 10px;
     }
-`
+    ${
+        (props: IDiv) =>
+            { switch(props.type) {
+                    case DivType.TEXTAREA:
+                        return textArea;
+                    case DivType.TRANSPARENT:
+                        return transparent;
+                    default:
+                        return transparent;
+                }
+            }
+    }
+`;
 
-export const WrapperTip = styled.div`
+export const DivTip = styled.div`
     font-size: 13px;
     line-height: 20px;
     margin-top: 40px;
