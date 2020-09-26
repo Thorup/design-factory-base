@@ -1,3 +1,3 @@
-export * from './ITheme'
-export * from './ThemeProps'
-export * from './DefaultTheme'
+export * from './ITheme';
+export * from './ThemeProps';
+export * from './DefaultTheme';

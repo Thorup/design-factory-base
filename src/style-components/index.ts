@@ -7,4 +7,4 @@ export * from './Paragraph';
 export * from './Section';
 export * from './Svg';
 export * from './List';
-export * from './Span'
+export * from './Span';

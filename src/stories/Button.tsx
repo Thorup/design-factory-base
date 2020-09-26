@@ -4,36 +4,34 @@ import * as S from '../style-components';
 import { defaultTheme } from '../style-themes';
 
 export interface IButton {
-  primary?: boolean;
+  type?: S.ButtonType;
   size?: S.ButtonSize;
-  /**
-   * Button contents
-   */
-  label?: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
+  label: string;
+  onClick: () => void;
 }
 
 /**
 * Primary UI component for user interaction
 */
 export const Button: React.FC<IButton> = ({
-primary = false,
-size = S.ButtonSize.MEDIUM,
-label,
-...props
+  type = S.ButtonType.OUTLINE,
+  size = S.ButtonSize.MEDIUM,
+  label,
+  ...props
 }) => {
-return (
-  <ThemeProvider theme={defaultTheme}>
-    <S.Button
-      primary={primary}
-      size={size}
-      {...props}
-    >
-      {label}
-    </S.Button>
-  </ThemeProvider>
-);
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      {
+        // TODO: Fix warning: "No overload matches this call."
+        // This warning does not break the project, but remains a possible problem until fixed. 
+      }
+      <S.Button
+        type={type}
+        size={size}
+        {...props}
+      >
+        {label}
+      </S.Button>
+    </ThemeProvider>
+  );
 };

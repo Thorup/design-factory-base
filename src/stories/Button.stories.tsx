@@ -16,12 +16,37 @@ const Template: Story<IButton> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  primary: true,
+  type: S.ButtonType.PRIMARY,
   label: 'Button'
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
+  type: S.ButtonType.SECONDARY,
+  label: 'Button'
+};
+
+export const Outline = Template.bind({});
+Outline.args = {
+  type: S.ButtonType.OUTLINE,
+  label: 'Button'
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  type: S.ButtonType.SUCCESS,
+  label: 'Button'
+};
+
+export const Alert = Template.bind({});
+Alert.args = {
+  type: S.ButtonType.ALERT,
+  label: 'Button'
+};
+
+export const Info = Template.bind({});
+Info.args = {
+  type: S.ButtonType.INFO,
   label: 'Button'
 };
 
