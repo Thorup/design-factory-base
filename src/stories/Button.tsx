@@ -11,8 +11,8 @@ export interface IButton {
 }
 
 /**
-* Primary UI component for user interaction
-*/
+ * Primary UI component for user interaction
+ */
 export const Button: React.FC<IButton> = ({
   type = S.ButtonType.OUTLINE,
   size = S.ButtonSize.MEDIUM,
@@ -23,13 +23,9 @@ export const Button: React.FC<IButton> = ({
     <ThemeProvider theme={defaultTheme}>
       {
         // TODO: Fix warning: "No overload matches this call."
-        // This warning does not break the project, but remains a possible problem until fixed. 
+        // This warning does not break the project, but remains a possible problem until fixed.
       }
-      <S.Button
-        type={type}
-        size={size}
-        {...props}
-      >
+      <S.Button type={type} size={size} {...props}>
         {label}
       </S.Button>
     </ThemeProvider>

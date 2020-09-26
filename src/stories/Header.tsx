@@ -12,12 +12,22 @@ export interface HeaderProps {
   onCreateAccount: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ user, onLogin, onLogout, onCreateAccount }) => (
+export const Header: React.FC<HeaderProps> = ({
+  user,
+  onLogin,
+  onLogout,
+  onCreateAccount
+}) => (
   <ThemeProvider theme={defaultTheme}>
     <header>
       <S.Div type={S.DivType.TRANSPARENT}>
         <div>
-          <S.Svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <S.Svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <g fill="none" fillRule="evenodd">
               <path
                 d="M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z"
@@ -37,11 +47,24 @@ export const Header: React.FC<HeaderProps> = ({ user, onLogin, onLogout, onCreat
         </div>
         <div>
           {user ? (
-            <Button size={S.ButtonSize.SMALL} onClick={onLogout} label="Log out" />
+            <Button
+              size={S.ButtonSize.SMALL}
+              onClick={onLogout}
+              label="Log out"
+            />
           ) : (
             <>
-              <Button size={S.ButtonSize.SMALL} onClick={onLogin} label="Log in" />
-              <Button type={S.ButtonType.PRIMARY} size={S.ButtonSize.SMALL} onClick={onCreateAccount} label="Sign up" />
+              <Button
+                size={S.ButtonSize.SMALL}
+                onClick={onLogin}
+                label="Log in"
+              />
+              <Button
+                type={S.ButtonType.PRIMARY}
+                size={S.ButtonSize.SMALL}
+                onClick={onCreateAccount}
+                label="Sign up"
+              />
             </>
           )}
         </div>
