@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { IThemeButton, IThemeGlobal } from '../style-themes';
+import styled, { css } from "styled-components";
+import { IThemeButton, IThemeGlobal } from "../style-themes";
 
 export interface IStyledButton {
   theme: IThemeButton & IThemeGlobal;
@@ -8,53 +8,101 @@ export interface IStyledButton {
 }
 
 export enum ButtonType {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  OUTLINE = 'outline',
-  SUCCESS = 'success',
-  ALERT = 'alert',
-  INFO = 'info'
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
+  OUTLINE = "outline",
+  SUCCESS = "success",
+  ALERT = "alert",
+  INFO = "info",
 }
 
 export enum ButtonSize {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large'
+  SMALL = "small",
+  MEDIUM = "medium",
+  LARGE = "large",
 }
 
 const ButtonPrimary = css`
   color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
   background-color: ${(props: IStyledButton) =>
     props.theme.globalStyles.primary.color.default};
+  &:hover {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.primary.color.darkThree};
+  }
+  &:focus {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.primary.color.darkThree};
+  }
 `;
 
 const ButtonSecondary = css`
   color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
   background-color: ${(props: IStyledButton) =>
     props.theme.globalStyles.secondary.color.default};
+  &:hover {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.secondary.color.darkThree};
+  }
+  &:focus {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.secondary.color.darkThree};
+  }
 `;
 
 const ButtonOutline = css`
   color: rgb(0, 0, 0);
-  background-color: transparent;
+  background-color: initial;
+  transition-duration: 0s;
+  &:hover {
+    box-shadow: 0px 2px 4px;
+  }
+  &:focus {
+    transition-duration: 0s;
+    box-shadow: 0px 1px 2px;
+  }
 `;
 
 const ButtonSuccess = css`
   color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
   background-color: ${(props: IStyledButton) =>
     props.theme.globalStyles.success.color.default};
+  &:hover {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.success.color.darkThree};
+  }
+  &:focus {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.success.color.darkThree};
+  }
 `;
 
 const ButtonAlert = css`
   color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
   background-color: ${(props: IStyledButton) =>
     props.theme.globalStyles.alert.color.default};
+  &:hover {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.alert.color.darkThree};
+  }
+  &:focus {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.alert.color.darkThree};
+  }
 `;
 
 const ButtonInfo = css`
   color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
   background-color: ${(props: IStyledButton) =>
     props.theme.globalStyles.info.color.default};
+  &:hover {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.info.color.darkThree};
+  }
+  &:focus {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.info.color.darkThree};
+  }
 `;
 
 const ButtonSmall = css`
@@ -74,6 +122,8 @@ const ButtonLarge = css`
 
 const ButtonConstraints = css`
   display: inline-block;
+  transition-duration: 0.5s;
+  outline: none;
 `;
 
 export const Button = styled.button<IStyledButton>`
