@@ -2,6 +2,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import * as S from "../style-components";
 import { defaultTheme } from "../style-themes";
+import { Heading, HeadingType } from "./Heading";
 
 export interface ILogo {
   label: string;
@@ -35,7 +36,7 @@ export const Logo: React.FC<ILogo> = ({ label, ...props }) => {
             />
           </g>
         </S.Svg>
-        <S.H1>{label}</S.H1>
+        <Heading type={HeadingType.H1} text={label} />
       </div>
     </ThemeProvider>
   );

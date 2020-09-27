@@ -25,3 +25,9 @@ export const H2 = styled.h2`
   font-size: 32px;
   margin: 0 0 4px;
 `;
+
+export const H3 = styled.h2`
+  ${HeadingConstraints}
+  font-size: 20px;
+  margin: 0 0 4px;
+`;

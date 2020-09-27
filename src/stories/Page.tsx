@@ -4,6 +4,8 @@ import { Header } from "./Header";
 import * as S from "../style-components";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "../style-themes";
+import { Heading, HeadingType } from "./Heading";
+import { Tip } from "./Tip";
 
 export interface PageProps {
   user?: {};
@@ -19,7 +21,7 @@ export const Page: React.FC<PageProps> = ({
   onCreateAccount,
 }) => (
   <ThemeProvider theme={defaultTheme}>
-    <article>
+    <S.Article>
       <Header
         user={user}
         onLogin={onLogin}
@@ -28,7 +30,7 @@ export const Page: React.FC<PageProps> = ({
       />
 
       <S.Section>
-        <S.H2>Pages in Storybook</S.H2>
+        <Heading type={HeadingType.H2} text={"Pages in Storybook"} />
         <S.P>
           We recommend building UIs with a{" "}
           <S.Link
@@ -75,8 +77,7 @@ export const Page: React.FC<PageProps> = ({
           .
         </S.P>
         <S.Div type={S.DivType.TIPCONTAINER} className="tip-wrapper">
-          <S.Tip className="tip">Tip</S.Tip> Adjust the width of the canvas with
-          the{" "}
+          <Tip label={"Tip"} /> Adjust the width of the canvas with the{" "}
           <S.Svg
             width="10"
             height="10"
@@ -94,6 +95,6 @@ export const Page: React.FC<PageProps> = ({
           Viewports addon in the toolbar
         </S.Div>
       </S.Section>
-    </article>
+    </S.Article>
   </ThemeProvider>
 );
