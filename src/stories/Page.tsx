@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { Header } from './Header';
-import * as S from '../style-components';
-import { ThemeProvider } from 'styled-components';
-import { defaultTheme } from '../style-themes';
+import { Header } from "./Header";
+import * as S from "../style-components";
+import { ThemeProvider } from "styled-components";
+import { defaultTheme } from "../style-themes";
 
 export interface PageProps {
   user?: {};
@@ -16,7 +16,7 @@ export const Page: React.FC<PageProps> = ({
   user,
   onLogin,
   onLogout,
-  onCreateAccount
+  onCreateAccount,
 }) => (
   <ThemeProvider theme={defaultTheme}>
     <article>
@@ -30,14 +30,14 @@ export const Page: React.FC<PageProps> = ({
       <S.Section>
         <S.H2>Pages in Storybook</S.H2>
         <S.P>
-          We recommend building UIs with a{' '}
+          We recommend building UIs with a{" "}
           <S.Link
             href="https://componentdriven.org"
             target="_blank"
             rel="noopener noreferrer"
           >
             <strong>component-driven</strong>
-          </S.Link>{' '}
+          </S.Link>{" "}
           process starting with atomic components and ending with pages.
         </S.P>
         <S.P>
@@ -56,7 +56,7 @@ export const Page: React.FC<PageProps> = ({
           </S.ListItem>
         </S.UnorderedList>
         <S.P>
-          Get a guided tutorial on component-driven development at{' '}
+          Get a guided tutorial on component-driven development at{" "}
           <S.Link
             href="https://www.learnstorybook.com"
             target="_blank"
@@ -64,7 +64,7 @@ export const Page: React.FC<PageProps> = ({
           >
             Learn Storybook
           </S.Link>
-          . Read more in the{' '}
+          . Read more in the{" "}
           <S.Link
             href="https://storybook.js.org/docs"
             target="_blank"
@@ -74,9 +74,9 @@ export const Page: React.FC<PageProps> = ({
           </S.Link>
           .
         </S.P>
-        <S.DivTip className="tip-wrapper">
+        <S.Div type={S.DivType.TIPCONTAINER} className="tip-wrapper">
           <S.Tip className="tip">Tip</S.Tip> Adjust the width of the canvas with
-          the{' '}
+          the{" "}
           <S.Svg
             width="10"
             height="10"
@@ -92,7 +92,7 @@ export const Page: React.FC<PageProps> = ({
             </g>
           </S.Svg>
           Viewports addon in the toolbar
-        </S.DivTip>
+        </S.Div>
       </S.Section>
     </article>
   </ThemeProvider>

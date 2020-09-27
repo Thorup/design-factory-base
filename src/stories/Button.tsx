@@ -1,7 +1,7 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import * as S from '../style-components';
-import { defaultTheme } from '../style-themes';
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import * as S from "../style-components";
+import { defaultTheme } from "../style-themes";
 
 export interface IButton {
   type?: S.ButtonType;
@@ -23,7 +23,7 @@ export const Button: React.FC<IButton> = ({
     <ThemeProvider theme={defaultTheme}>
       {
         // TODO: Fix warning: "No overload matches this call."
-        // This warning does not break the project, but remains a possible problem until fixed.
+        // This warning does not break the project, but remains a possible problem until investigated and fixed.
       }
       <S.Button type={type} size={size} {...props}>
         {label}

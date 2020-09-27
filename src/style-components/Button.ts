@@ -1,12 +1,6 @@
 import styled, { css } from "styled-components";
 import { IThemeButton, IThemeGlobal } from "../style-themes";
 
-export interface IStyledButton {
-  theme: IThemeButton & IThemeGlobal;
-  type: ButtonType;
-  size: ButtonSize;
-}
-
 export enum ButtonType {
   PRIMARY = "primary",
   SECONDARY = "secondary",
@@ -22,7 +16,13 @@ export enum ButtonSize {
   LARGE = "large",
 }
 
-const ButtonPrimary = css`
+export interface IStyledButton {
+  theme: IThemeButton & IThemeGlobal;
+  type: ButtonType;
+  size: ButtonSize;
+}
+
+const ConstraintsPrimary = css`
   color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
   background-color: ${(props: IStyledButton) =>
     props.theme.globalStyles.primary.color.default};
@@ -36,7 +36,7 @@ const ButtonPrimary = css`
   }
 `;
 
-const ButtonSecondary = css`
+const ConstraintsSecondary = css`
   color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
   background-color: ${(props: IStyledButton) =>
     props.theme.globalStyles.secondary.color.default};
@@ -50,7 +50,7 @@ const ButtonSecondary = css`
   }
 `;
 
-const ButtonOutline = css`
+const ConstraintsOutline = css`
   color: rgb(0, 0, 0);
   background-color: initial;
   transition-duration: 0s;
@@ -63,7 +63,7 @@ const ButtonOutline = css`
   }
 `;
 
-const ButtonSuccess = css`
+const ConstraintsSuccess = css`
   color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
   background-color: ${(props: IStyledButton) =>
     props.theme.globalStyles.success.color.default};
@@ -77,7 +77,7 @@ const ButtonSuccess = css`
   }
 `;
 
-const ButtonAlert = css`
+const ConstraintsAlert = css`
   color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
   background-color: ${(props: IStyledButton) =>
     props.theme.globalStyles.alert.color.default};
@@ -91,7 +91,7 @@ const ButtonAlert = css`
   }
 `;
 
-const ButtonInfo = css`
+const ConstraintsInfo = css`
   color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
   background-color: ${(props: IStyledButton) =>
     props.theme.globalStyles.info.color.default};
@@ -105,29 +105,29 @@ const ButtonInfo = css`
   }
 `;
 
-const ButtonSmall = css`
+const ConstraintsSmall = css`
   font-size: 12px;
   padding: 10px 16px;
 `;
 
-const ButtonMedium = css`
+const ConstraintsMedium = css`
   font-size: 14px;
   padding: 11px 20px;
 `;
 
-const ButtonLarge = css`
+const ConstraintsLarge = css`
   font-size: 16px;
   padding: 12px 24px;
 `;
 
-const ButtonConstraints = css`
+const ConstraintsGlobal = css`
   display: inline-block;
   transition-duration: 0.5s;
   outline: none;
 `;
 
 export const Button = styled.button<IStyledButton>`
-  ${ButtonConstraints};
+  ${ConstraintsGlobal};
   font-family: ${(props: IStyledButton) => props.theme.globalStyles.fontFamily};
   font-weight: ${(props: IStyledButton) => props.theme.buttonStyles.fontWeight};
   border: ${(props: IStyledButton) => props.theme.buttonStyles.border};
@@ -138,41 +138,41 @@ export const Button = styled.button<IStyledButton>`
   ${(props: IStyledButton) => {
     switch (props.size) {
       case ButtonSize.SMALL: {
-        return ButtonSmall;
+        return ConstraintsSmall;
       }
       case ButtonSize.MEDIUM: {
-        return ButtonMedium;
+        return ConstraintsMedium;
       }
       case ButtonSize.LARGE: {
-        return ButtonLarge;
+        return ConstraintsLarge;
       }
       default: {
-        return ButtonMedium;
+        return ConstraintsMedium;
       }
     }
   }};
   ${(props: IStyledButton) => {
     switch (props.type) {
       case ButtonType.PRIMARY: {
-        return ButtonPrimary;
+        return ConstraintsPrimary;
       }
       case ButtonType.SECONDARY: {
-        return ButtonSecondary;
+        return ConstraintsSecondary;
       }
       case ButtonType.OUTLINE: {
-        return ButtonOutline;
+        return ConstraintsOutline;
       }
       case ButtonType.SUCCESS: {
-        return ButtonSuccess;
+        return ConstraintsSuccess;
       }
       case ButtonType.ALERT: {
-        return ButtonAlert;
+        return ConstraintsAlert;
       }
       case ButtonType.INFO: {
-        return ButtonInfo;
+        return ConstraintsInfo;
       }
       default: {
-        return ButtonOutline;
+        return ConstraintsOutline;
       }
     }
   }};
