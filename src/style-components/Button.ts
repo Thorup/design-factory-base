@@ -1,77 +1,179 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
+import { IThemeButton, IThemeGlobal } from "../style-themes";
 
-export interface IButton {
-    /**
-     * Is this the principal call to action on the page?
-     */
-    primary?: boolean;
-    /**
-     * What background color to use
-     */
-    backgroundColor?: string;
-    /**
-     * How large should the button be?
-     */
-    size?: ButtonSize;
+export enum ButtonType {
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
+  OUTLINE = "outline",
+  SUCCESS = "success",
+  ALERT = "alert",
+  INFO = "info",
 }
 
 export enum ButtonSize {
-    SMALL = 'small',
-    MEDIUM = 'medium',
-    LARGE = 'large'
+  SMALL = "small",
+  MEDIUM = "medium",
+  LARGE = "large",
 }
 
-const ButtonPrimary = css`
-    color: white;
-    background-color: #1ea7fd;
-`
+export interface IStyledButton {
+  theme: IThemeButton & IThemeGlobal;
+  type: ButtonType;
+  size: ButtonSize;
+}
 
-const ButtonSecondary = css`
-    color: #333;
-    background-color: transparent;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-`
+const ConstraintsPrimary = css`
+  color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
+  background-color: ${(props: IStyledButton) =>
+    props.theme.globalStyles.primary.color.default};
+  &:hover {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.primary.color.darkThree};
+  }
+  &:focus {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.primary.color.darkThree};
+  }
+`;
 
-const ButtonSmall = css`
-    font-size: 12px;
-    padding: 10px 16px;
-`
+const ConstraintsSecondary = css`
+  color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
+  background-color: ${(props: IStyledButton) =>
+    props.theme.globalStyles.secondary.color.default};
+  &:hover {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.secondary.color.darkThree};
+  }
+  &:focus {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.secondary.color.darkThree};
+  }
+`;
 
-const ButtonMedium = css`
-    font-size: 14px;
-    padding: 11px 20px;
-`
+const ConstraintsOutline = css`
+  color: rgb(0, 0, 0);
+  background-color: initial;
+  transition-duration: 0s;
+  &:hover {
+    box-shadow: 0px 2px 4px;
+  }
+  &:focus {
+    transition-duration: 0s;
+    box-shadow: 0px 1px 2px;
+  }
+`;
 
-const ButtonLarge = css`
-    font-size: 16px;
-    padding: 12px 24px;
-`
+const ConstraintsSuccess = css`
+  color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
+  background-color: ${(props: IStyledButton) =>
+    props.theme.globalStyles.success.color.default};
+  &:hover {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.success.color.darkThree};
+  }
+  &:focus {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.success.color.darkThree};
+  }
+`;
 
-export const Button = styled.button<IButton>`
-    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    border: 0;
-    border-radius: 3em;
-    cursor: pointer;
-    display: inline-block;
-    line-height: 1;
-    background-color: ${(props: IButton) => props.backgroundColor ? props.backgroundColor + ' !important' : ''};
-    ${(props: IButton) => 
-        { switch(props.size) {
-            case ButtonSize.SMALL:  {
-                return ButtonSmall;
-            }
-            case ButtonSize.MEDIUM: {
-                return ButtonMedium;
-            }
-            case ButtonSize.LARGE: {
-                return ButtonLarge
-            }
-            default: {
-                return ButtonMedium;
-            }
-        }
+const ConstraintsAlert = css`
+  color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
+  background-color: ${(props: IStyledButton) =>
+    props.theme.globalStyles.alert.color.default};
+  &:hover {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.alert.color.darkThree};
+  }
+  &:focus {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.alert.color.darkThree};
+  }
+`;
+
+const ConstraintsInfo = css`
+  color: ${(props: IStyledButton) => props.theme.buttonStyles.contentColor};
+  background-color: ${(props: IStyledButton) =>
+    props.theme.globalStyles.info.color.default};
+  &:hover {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.info.color.darkThree};
+  }
+  &:focus {
+    background-color: ${(props: IStyledButton) =>
+      props.theme.globalStyles.info.color.darkThree};
+  }
+`;
+
+const ConstraintsSmall = css`
+  font-size: 12px;
+  padding: 10px 16px;
+`;
+
+const ConstraintsMedium = css`
+  font-size: 14px;
+  padding: 11px 20px;
+`;
+
+const ConstraintsLarge = css`
+  font-size: 16px;
+  padding: 12px 24px;
+`;
+
+const ConstraintsGlobal = css`
+  display: inline-block;
+  transition-duration: 0.5s;
+  outline: none;
+`;
+
+export const Button = styled.button<IStyledButton>`
+  ${ConstraintsGlobal};
+  font-family: ${(props: IStyledButton) => props.theme.globalStyles.fontFamily};
+  font-weight: ${(props: IStyledButton) => props.theme.buttonStyles.fontWeight};
+  border: ${(props: IStyledButton) => props.theme.buttonStyles.border};
+  border-radius: ${(props: IStyledButton) =>
+    props.theme.buttonStyles.borderRadius};
+  cursor: ${(props: IStyledButton) => props.theme.buttonStyles.cursor};
+  line-height: ${(props: IStyledButton) => props.theme.buttonStyles.lineHeight};
+  ${(props: IStyledButton) => {
+    switch (props.size) {
+      case ButtonSize.SMALL: {
+        return ConstraintsSmall;
+      }
+      case ButtonSize.MEDIUM: {
+        return ConstraintsMedium;
+      }
+      case ButtonSize.LARGE: {
+        return ConstraintsLarge;
+      }
+      default: {
+        return ConstraintsMedium;
+      }
     }
-    };
-    ${(props: IButton) => props.primary ? ButtonPrimary : ButtonSecondary};
+  }};
+  ${(props: IStyledButton) => {
+    switch (props.type) {
+      case ButtonType.PRIMARY: {
+        return ConstraintsPrimary;
+      }
+      case ButtonType.SECONDARY: {
+        return ConstraintsSecondary;
+      }
+      case ButtonType.OUTLINE: {
+        return ConstraintsOutline;
+      }
+      case ButtonType.SUCCESS: {
+        return ConstraintsSuccess;
+      }
+      case ButtonType.ALERT: {
+        return ConstraintsAlert;
+      }
+      case ButtonType.INFO: {
+        return ConstraintsInfo;
+      }
+      default: {
+        return ConstraintsOutline;
+      }
+    }
+  }};
 `;
