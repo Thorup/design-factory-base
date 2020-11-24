@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { IThemeDiv, IThemeGlobal } from "../style-themes";
+import { IThemeGlobal } from "../style-themes";
 
 export enum DivType {
   TRANSPARENTCONTAINER = "transparentContainer",
@@ -8,7 +8,7 @@ export enum DivType {
 }
 
 export interface IStyledDiv {
-  theme: IThemeDiv & IThemeGlobal;
+  theme: IThemeGlobal;
   type: DivType;
 }
 

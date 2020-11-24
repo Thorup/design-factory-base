@@ -2,7 +2,6 @@ import {
   ThemeButtonProps,
   ThemeCategoryProps,
   ThemeColorProps,
-  ThemeDivProps,
   ThemeGlobalProps,
   ThemeParagraphProps
 } from './ThemeProps';
@@ -22,7 +21,6 @@ export interface IThemeColor {
 
 export interface IThemeGlobal {
   [ThemeGlobalProps.GLOBALSTYLES]: {
-    [ThemeGlobalProps.FONTFAMILY]: string;
     [ThemeCategoryProps.PRIMARY]: {
       [ThemeCategoryProps.COLOR]: IThemeColor;
     };
@@ -54,18 +52,11 @@ export interface IThemeButton {
 
 export interface IThemeParagraph {
   [ThemeParagraphProps.PARAGRAPHSTYLES]: {
+    [ThemeParagraphProps.FONTFAMILY]: string;
     [ThemeParagraphProps.FONTWEIGHT]: string;
     [ThemeParagraphProps.COLOR]: string;
     [ThemeParagraphProps.MARGIN]: string;
   };
 }
 
-export interface IThemeDiv {
-  [ThemeDivProps.DIVSTYLES]: {
-    [ThemeDivProps.DIVTEXTAREA]: {
-      [ThemeDivProps.BACKGROUNDCOLOR]: string;
-    };
-  };
-}
-
-export type ITheme = IThemeGlobal & IThemeButton & IThemeParagraph & IThemeDiv;
+export type ITheme = IThemeGlobal & IThemeButton & IThemeParagraph;

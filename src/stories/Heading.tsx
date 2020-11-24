@@ -3,15 +3,14 @@ import { ThemeProvider } from "styled-components";
 import * as S from "../style-components";
 import { defaultTheme } from "../style-themes";
 
-export interface IHeading {
-  type: HeadingType;
-  text: string;
-}
-
 export enum HeadingType {
   H1 = "h1",
   H2 = "h2",
   H3 = "h3",
+}
+export interface IHeading {
+  type: HeadingType;
+  text: string;
 }
 
 /**

@@ -8,8 +8,7 @@ export enum ThemeCategoryProps {
 }
 
 export enum ThemeGlobalProps {
-  GLOBALSTYLES = 'globalStyles',
-  FONTFAMILY = 'fontFamily'
+  GLOBALSTYLES = 'globalStyles'
 }
 
 export enum ThemeColorProps {
@@ -38,13 +37,8 @@ export enum ThemeButtonProps {
 
 export enum ThemeParagraphProps {
   PARAGRAPHSTYLES = 'paragraphStyles',
+  FONTFAMILY = 'fontFamily',
   FONTWEIGHT = 'fontWeight',
   COLOR = 'color',
   MARGIN = 'margin'
-}
-
-export enum ThemeDivProps {
-  DIVSTYLES = 'divStyles',
-  DIVTEXTAREA = 'divTextarea',
-  BACKGROUNDCOLOR = 'backgroundColor'
 }

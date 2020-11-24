@@ -1,12 +1,15 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import * as S from "../style-components";
+import { DivType } from "../style-components";
+import { IconName } from "../style-components/Icon";
 import { defaultTheme } from "../style-themes";
 
 export interface IButton {
   type?: S.ButtonType;
   size?: S.ButtonSize;
-  label: string;
+  icon?: IconName;
+  label?: string;
   onClick: () => void;
 }
 
@@ -16,6 +19,7 @@ export interface IButton {
 export const Button: React.FC<IButton> = ({
   type = S.ButtonType.OUTLINE,
   size = S.ButtonSize.MEDIUM,
+  icon,
   label,
   ...props
 }) => {
@@ -26,7 +30,9 @@ export const Button: React.FC<IButton> = ({
         // This warning does not break the project, but remains a possible problem until investigated and fixed.
       }
       <S.Button type={type} size={size} {...props}>
-        {label}
+        <S.Div type={DivType.TRANSPARENTCONTAINER}>
+          {icon ? <Icon iconType /> : null}
+        </S.Div>
       </S.Button>
     </ThemeProvider>
   );

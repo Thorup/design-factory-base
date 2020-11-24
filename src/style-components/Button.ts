@@ -128,7 +128,6 @@ const ConstraintsGlobal = css`
 
 export const Button = styled.button<IStyledButton>`
   ${ConstraintsGlobal}
-  font-family: ${(props: IStyledButton) => props.theme.globalStyles.fontFamily};
   font-weight: ${(props: IStyledButton) => props.theme.buttonStyles.fontWeight};
   border: ${(props: IStyledButton) => props.theme.buttonStyles.border};
   border-radius: ${(props: IStyledButton) =>
